@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.lox :setfiletype lox
+autocmd BufNewFile,BufRead *.szg :setfiletype syzygy

@@ -1,5 +1,5 @@
-" Lox syntax file
-" Language: Lox
+" Syzygy syntax file
+" Language: Syzygy
 " Maintainer: Timmy Jose
 
 :if exists("b:current_syntax")
@@ -7,42 +7,55 @@
 :endif
 
 " keywords
-:syntax keyword loxKeyword class fun var 
-:syntax keyword loxKeyword for while return
+:syntax keyword syzygyKeyword struct union enum fn let
+:syntax keyword syzygyKeyword use
+:syntax keyword syzygyKeyword while return
 
 " booleans
-:syntax keyword loxBoolean true false
+:syntax keyword syzygyBoolean true false
 
 " functions
-:syntax keyword loxFunction print 
+:syntax keyword syzygyConstant nullptr anyptr
+
+" functions
+:syntax match syzygyFunction "\v[a-zA-Z_]([::|\.|->]?[a-zA-Z_])*"
 
 " operators
-:syntax match loxOperator "\v\*"
-:syntax match loxOperator "\v\+"
-:syntax match loxOperator "\v\-"
-:syntax match loxOperator "\v/"
-:syntax match loxOperator "\v\="
-:syntax match loxOperator "\v!"
+:syntax match syzygyOperator "\v\*=?"
+:syntax match syzygyOperator "\v\+=?"
+:syntax match syzygyOperator "\v\-=?"
+:syntax match syzygyOperator "\v/=?"
+:syntax match syzygyOperator "\v%=?"
+:syntax match syzygyOperator "\v<<=?"
+:syntax match syzygyOperator "\v>>=?"
+:syntax match syzygyOperator "\v>>>=?"
+:syntax match syzygyOperator "\v&=?"
+:syntax match syzygyOperator "\v^=?"
+:syntax match syzygyOperator "\v|=?"
+:syntax match syzygyOperator "\v\==?"
+:syntax match syzygyOperator "\v!=?"
+:syntax match syzygyOperator "\v->"
 
 " conditionals
-:syntax keyword loxConditional if else and or else
+:syntax keyword syzygyConditional if else 
 
 " numbers
-:syntax match loxNumber "\v\-?\d*(\.\d+)?"
+:syntax match syzygyNumber "\v\-?\d*(\.\d+)?"
 
 " strings
-:syntax region loxString start="\v\"" end="\v\""
+:syntax region syzygyString start="\v\"" end="\v\""
 
 " comments
-:syntax match loxComment "\v//.*$"
+:syntax match syzygyComment "\v//.*$"
 
-:highlight link loxKeyword Keyword
-:highlight link loxBoolean Boolean
-:highlight link loxFunction Function
-:highlight link loxOperator Operator
-:highlight link loxConditional Conditional
-:highlight link loxNumber Number
-:highlight link loxString String
-:highlight link loxComment Comment
+:highlight link syzygyKeyword Keyword
+:highlight link syzygyBoolean Boolean
+:highlight link syzygyConstant Constant
+:highlight link syzygyFunction Function
+:highlight link syzygyOperator Operator
+:highlight link syzygyConditional Conditional
+:highlight link syzygyNumber Number
+:highlight link syzygyString String
+:highlight link syzygyComment Comment
 
-:let b:current_syntax = "lox"
+:let b:current_syntax = "syzygy"
