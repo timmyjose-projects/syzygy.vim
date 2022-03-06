@@ -47,7 +47,7 @@ fn ll_display(list: *Node) -> void {
   } else {
     let curr: *Node = list;
     while curr != nullptr {
-      io::printf("{} ", curr->data);
+      io::print("{} ", curr->data);
       curr = curr->next;
     }
   }

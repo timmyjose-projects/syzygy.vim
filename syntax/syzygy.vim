@@ -7,34 +7,61 @@
 :endif
 
 " keywords
-:syntax keyword syzygyKeyword struct union enum fn let
-:syntax keyword syzygyKeyword use
-:syntax keyword syzygyKeyword while return
+:syntax keyword syzygyKeyword struct nextgroup=syzygyStructName skipWhite skipempty
+:syntax keyword syzygyKeyword union nextgroup=syzygyUnionName skipwhite skipempty
+:syntax keyword syzygyKeyword enum nextgroup=syzygyEnumName skipwhite skipempty
+:syntax keyword syzygyKeyword fn nextgroup=syzygyFunctionName skipwhite skipempty
+:syntax keyword syzygyKeyword use let void
+:syntax keyword syzygyKeyword const
+:syntax keyword syzygyKeyword while return defer break continue
 
 " booleans
 :syntax keyword syzygyBoolean true false
 
-" functions
+" constants
 :syntax keyword syzygyConstant nullptr anyptr
 
+" structs, unions, and enums
+:syntax match syzygyStructName "\w\+"
+:syntax match syzygyUnionName "\w\+"
+:syntax match syzygyEnumName "\w\+"
+
+
 " functions
-:syntax match syzygyFunction "\v[a-zA-Z_]([::|\.|->]?[a-zA-Z_])*"
+:syntax match syzygyFunctionName "\w\+"
+
+" Types
+:syntax keyword syzygyType int float bool char String
 
 " operators
-:syntax match syzygyOperator "\v\*=?"
-:syntax match syzygyOperator "\v\+=?"
-:syntax match syzygyOperator "\v\-=?"
-:syntax match syzygyOperator "\v/=?"
-:syntax match syzygyOperator "\v%=?"
-:syntax match syzygyOperator "\v<<=?"
-:syntax match syzygyOperator "\v>>=?"
-:syntax match syzygyOperator "\v>>>=?"
-:syntax match syzygyOperator "\v&=?"
-:syntax match syzygyOperator "\v^=?"
-:syntax match syzygyOperator "\v|=?"
-:syntax match syzygyOperator "\v\==?"
-:syntax match syzygyOperator "\v!=?"
-:syntax match syzygyOperator "\v->"
+:syntax match syzygyOperator "\v\*"
+:syntax match syzygyOperator "\v\*="
+:syntax match syzygyOperator "\v\+"
+:syntax match syzygyOperator "\v\+="
+:syntax match syzygyOperator "\v\-"
+:syntax match syzygyOperator "\v\-="
+:syntax match syzygyOperator "\v/"
+:syntax match syzygyOperator "\v/="
+:syntax match syzygyOperator "\v\%"
+:syntax match syzygyOperator "\v\%="
+:syntax match syzygyOperator "\v<<"
+:syntax match syzygyOperator "\v<<="
+:syntax match syzygyOperator "\v>>"
+:syntax match syzygyOperator "\v>>="
+:syntax match syzygyOperator "\v>>>"
+:syntax match syzygyOperator "\v>>>="
+:syntax match syzygyOperator "\v\&"
+:syntax match syzygyOperator "\v\&&"
+:syntax match syzygyOperator "\v\&="
+:syntax match syzygyOperator "\v\^"
+:syntax match syzygyOperator "\v\^="
+:syntax match syzygyOperator "\v\|"
+:syntax match syzygyOperator "\v\|="
+:syntax match syzygyOperator "\v\="
+:syntax match syzygyOperator "\v\=="
+:syntax match syzygyOperator "\v\!"
+:syntax match syzygyOperator "\v\!="
+:syntax match syzygyOperator "\v-\>"
 
 " conditionals
 :syntax keyword syzygyConditional if else 
@@ -48,14 +75,19 @@
 " comments
 :syntax match syzygyComment "\v//.*$"
 
-:highlight link syzygyKeyword Keyword
-:highlight link syzygyBoolean Boolean
-:highlight link syzygyConstant Constant
-:highlight link syzygyFunction Function
-:highlight link syzygyOperator Operator
-:highlight link syzygyConditional Conditional
-:highlight link syzygyNumber Number
-:highlight link syzygyString String
-:highlight link syzygyComment Comment
+:highlight default link syzygyKeyword Keyword
+:highlight default link syzygyBoolean Boolean
+:highlight default link syzygyConstant Constant
+:highlight default link syzygyStructName Type
+:highlight default link syzygyUnionName Type
+:highlight default link syzygyEnumName Type
+:highlight default link syzygyFunctionName Function
+:highlight default link syzygyFunctionCall Function
+:highlight default link syzygyOperator Operator
+:highlight default link syzygyConditional Conditional
+:highlight default link syzygyNumber Number
+:highlight default link syzygyString String
+:highlight default link syzygyComment Comment
+:highlight default link syzygyType Type
 
 :let b:current_syntax = "syzygy"
