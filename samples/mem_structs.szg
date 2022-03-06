@@ -1,0 +1,32 @@
+use std::io;
+use std::mem;
+use std::error;
+
+struct Person {
+  name: String,
+  age: int
+}
+
+fn read_person(p: *Person) -> void {
+  io::print("Enter name: ");
+  *p.name = io::getstring();
+
+  io::print("Enter age: ");
+  *p.age = io::getint();
+}
+
+fn display_person(p: *Person) -> void {
+  io::print("Person {{ Name = {}, Age =  {} }}", *p.name, *p.age); 
+}
+
+fn main() -> void {
+  let person: Person = mem::alloc(mem::sizeof(Person));
+  defer mem::free(person);
+
+  if person == nullptr {
+    error::panic("could not allocate memory for Person");
+  }
+
+  read_person(person);
+  display_person(person);
+}

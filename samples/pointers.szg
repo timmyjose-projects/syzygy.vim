@@ -1,0 +1,39 @@
+use std::io;
+use std::mem;
+
+struct Basic {
+  i: int,
+  s: String,
+}
+
+struct Nested {
+  field1: *Basic,
+  field2: Basic,
+  field3: bool,
+}
+
+fn main() -> void {
+  let x: int = 42;
+  let ptr_x: *int = &x;
+
+  io::print("x = {}, *ptr_x = {}\n", x, *ptr_x);
+
+  let basic1: Basic = Basic;
+  basic1.i = 100;
+  basic1.s = "Hello";
+
+  let basic2: Basic = mem::alloc(mem::sizeof(Basic));
+  defer mem::free(basic);
+
+  basic2.i = 200;
+  basic2.s = "World";
+
+  let nested: Nested = mem::alloc(mem::sizeof(Nested));
+  defer mem::free(nested);
+
+  nested.field1 = &basic1;
+  nested.field2 = *basic2;
+  nested.field3 = true;
+
+  io::print("{}, {}, {}, {}, {}\n", nested->field1->i, nested->field1->s, nested->field2.i, nested->field2.s, nested->field3);
+}

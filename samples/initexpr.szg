@@ -1,0 +1,21 @@
+enum Baz {
+  Quux,
+  FooBar
+}
+
+union Quux {
+  f1: int,
+  f2: String
+}
+
+struct Foo {
+  bar: Baz
+  baz: Quux,
+}
+
+fn main() -> void {
+  let arr: [5]String = [ "Hello", "World", "Again", "We", "Meet" ];
+  let baz: Baz = Baz.FooBar;
+  let quux: Quux = { f2: "Welcome" };
+  let foo: Foo = { bar: baz, baz: quux };
+}

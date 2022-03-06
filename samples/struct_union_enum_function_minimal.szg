@@ -1,0 +1,24 @@
+fn foo() -> void {
+}
+
+struct A {
+  field1: String,
+  field2: int
+}
+
+enum B {
+  Variant1,
+  Variant2,
+  Variant3,
+}
+
+union SomeUnion {
+  tag1: A,
+  tag2: B
+}
+
+fn bar() -> void {
+}
+
+fn main() -> void {
+}

@@ -1,0 +1,11 @@
+use std::io;
+
+fn main() -> void {
+  let ctr: int = 0;
+
+  while ctr < 10 {
+    ctr += 1;
+    io::print("{} ", ctr);
+  }
+  io::print("\n");
+}

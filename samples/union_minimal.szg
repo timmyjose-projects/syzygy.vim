@@ -1,0 +1,16 @@
+union Foo {
+  b: bool,
+  c: char,
+  i: int,
+  f: float,
+  s: string
+}
+
+struct Bar {
+  id: String
+}
+
+union SomeUnion {
+  field1: String,
+  field2: Bar,
+}

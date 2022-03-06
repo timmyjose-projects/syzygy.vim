@@ -1,0 +1,27 @@
+use std::io;
+
+fn main() -> void {
+  let x: int = io::getint();
+
+  if true {
+    io::print("True");
+  } else {
+    io::print("False");
+  }
+
+  if true {
+    io::print("True");
+  }
+
+  if x < 42 {
+    io::print("Less than 42");
+  } else if x == 42 {
+    io::print("Equal to 42");
+  } else {
+    io::print("Greater than 42");
+  }
+
+  if x <= 0 {
+    io::print("x is less than or equal to zero");
+  }
+}

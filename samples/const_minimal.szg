@@ -1,0 +1,10 @@
+use std::io;
+
+const foo: int = 12345;
+const bar: String = "Hello, world";
+const baz: char = 'x';
+const quux: bool = true;
+const foobar: float = 2.78128;
+
+fn main() -> void {
+}

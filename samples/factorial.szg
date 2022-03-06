@@ -1,0 +1,14 @@
+use std::io;
+
+fn factorial(n: int) -> int {
+  if n <= 0 {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+
+fn main() -> void {
+  let n: int = io::getint();
+  io::print("The factorial of {} is {}\n", n, factorial(n));
+}

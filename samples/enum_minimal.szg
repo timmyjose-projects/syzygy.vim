@@ -1,0 +1,12 @@
+enum Foo {
+  Bar,
+  Baz,
+  Quux
+}
+
+enum SomeEnum {
+  Variant1,
+  Variant2,
+  Variant3,
+}
+  

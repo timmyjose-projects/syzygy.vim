@@ -1,0 +1,28 @@
+use std::io;
+
+struct Person {
+  name: String,
+  age: int
+}
+
+struct Point {
+  x: int,
+  y: int,
+  z: int
+}
+
+union Payload {
+  person: *Person,
+  point: *Point
+}
+
+fn main() -> void {
+  let person: Person = { name:  "Bob", age: 21 };
+  let point: Point = { x: 100, y: -200, z: -300 };
+
+  let payload: Payload = { person: &person };
+  io::print("{}\n", payload.person);
+
+  payload = { point: &point };
+  io::print("{}\n", payload.point);
+}

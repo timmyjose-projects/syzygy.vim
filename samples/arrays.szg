@@ -1,0 +1,52 @@
+use std::io;
+use std::mem;
+
+struct Person {
+  name: String,
+  age: int
+}
+
+fn main() -> void {
+  let arr1: [5]int;
+  let arr2: [5][3]i32;
+  let arr3: [2][3][4]String;
+  let arr4: [5]i32 = [ 1, 2, 3, 4, 5];
+  let arr5: [5]i32 = [ 1, 2, 3, 4, 5, ];
+
+  test_array_of_struct();
+  test_array_of_struct_pointers();
+}
+
+fn test_array_of_struct() -> void {
+  let a: [3]Person;
+  a[0] = { name: "Adam", age: 21 };
+  a[1] = { name: "Bob", age: 42 };
+  a[2] = { name: "Wanda", age: 98 };
+
+  let ctr: int = 0;
+
+  while ctr < 3 {
+    io::print("Name: {}, age: {}\n", a[ctr].name, a[ctr].age);
+    ctr += 1;
+  }
+}
+
+fn test_array_of_struct_pointers() -> void {
+  let a: [3]*Person;
+}
+
+fn test_pointer_to_array_of_structs() -> void {
+  let a: *[3]Person;
+}
+
+fn test_pointer_to_array_of_struct_pointers() -> void {
+  let a: *[5]*Person;
+}
+
+fn test_pointer_to_multidimensional_array_of_struct_pointers() -> void {
+  let a: *[2][3]*Person;
+}
+
+fn test_array_of_pointers_to_multidimensional_array_of_struct_pointers() -> void {
+  //let a: [10]*[2][5]*Person;
+}

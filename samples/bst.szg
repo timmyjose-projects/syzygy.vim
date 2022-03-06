@@ -1,0 +1,62 @@
+use std::io;
+use std::mem;
+
+struct Node {
+  data: int,
+  left: *Node,
+  right: *Node,
+}
+
+fn init_node(data: int) -> *Node {
+  let node: *Node = mem::alloc(mem::sizeof(Node));
+  node->left = nullptr;
+  node->right = nullptr;
+  node->data = data;
+
+  return node;
+}
+
+fn bst_insert(root: *Node, data: int) -> *Node {
+  if root == nullptr {
+    root = init_node(data);
+  } else if data <= root->data {
+    root->left = bst_insert(root->left, data);
+  } else {
+    root->right = bst_insert(root->right, data);
+  }
+
+  return root;
+}
+
+fn bst_in_order(root: *Node) -> void {
+  if root == nullptr {
+    return;
+  }
+
+  bst_in_order(root->left);
+  io::print("{} ", root->data);
+  bst_in_order(root->right);
+}
+
+fn bst_destroy(root: *Node) -> void {
+  if root == nullptr {
+    return;
+  }
+
+  bst_destroy(root->left);
+  bst_destroy(root->right);
+  mem::free(root);
+}
+
+fn main() -> void {
+  let bst: *Bst = nullptr;
+  defer bst_destroy(bst);
+
+  bst = bst_insert(&bst, 5);
+  bst = bst_insert(&bst, 1);
+  bst = bst_insert(&bst, 2);
+  bst = bst_insert(&bst, 3);
+  bst = bst_insert(&bst, 4);
+
+  bst_in_order(bst);
+}

@@ -1,0 +1,8 @@
+use std::io;
+
+const pi: float = 3.14159;
+
+fn main() -> void {
+  const radius: float = 10.12345;
+  io::print("The area of a circle of radius is {}\n", pi * radius * radius);
+}

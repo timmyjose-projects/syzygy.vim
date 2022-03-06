@@ -1,0 +1,5 @@
+use std::io;
+use std::mem;
+
+fn main() -> void {
+}

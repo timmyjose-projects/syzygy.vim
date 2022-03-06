@@ -1,0 +1,37 @@
+use std::io;
+
+fn main() -> void {
+  io::print("Hello, world!");
+  bar();
+  {
+    bar();
+  }
+  io::print(baz());
+  
+  {
+    {
+      {
+        {
+          {
+            quux();
+          }
+        }
+      }
+    }
+  }
+}
+
+fn bar() -> void {
+
+}
+
+fn baz() -> int {
+  return 1;
+}
+
+fn quux() -> bool {
+  let x: int;
+  let y: float = 2.78128;
+
+  return true;
+}

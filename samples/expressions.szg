@@ -1,0 +1,150 @@
+use std::io;
+
+fn main() -> void {
+  test_assign_expr();
+  test_logical_expr();
+  test_bitwise_expr();
+  test_bitwise_shift_expr();
+  test_additive_expr();
+  test_multiplicative_expr();
+  test_unary_expr();
+  test_paren_expr();
+  test_miscellaneous();
+}
+
+struct Foo {
+  f1: int,
+  f2: float
+}
+
+union Bar {
+  v1: String,
+  v2: [2][3]*Foo,
+}
+
+fn test_miscellaneous() -> void {
+  let u: Bar = { v2 : [ [&{ f1: 1, f2: 1.2 }, &{ f1: 2, f2: 2.3}, &{ f1: 3, f2: 3.4}], [&{ f1: 11, f2: 1.12 }, &{ f1: 23, f2: -122.3}, &{ f1: -311, f2: -0.4}] ] };
+}
+
+fn foo(x: int) -> int {
+  return x * 2;
+}
+
+fn bar(x: int) -> int {
+  return x * 3;
+}
+
+fn baz(x: int) -> int {
+  return x * 5;
+}
+
+fn test_paren_expr() -> void {
+  let e1: int = (10);
+  io::print("e1 = {}\n", e1);
+
+  let e2: int = (1 + 2 * (3 - 4));
+  io::print("e2 = {}\n", e2);
+
+  let e3: int = foo(bar(baz(10)));
+  io::print("e3 = {}\n", e3);
+
+  let e4: int = 1 + (2 * 3 / (11 % 2 - 3));
+  io::print("e3 = {}\n", e4);
+}
+
+fn test_unary_expr() -> void {
+  let a: int = +5;
+  let b: int = -5;
+
+  io::print("a = {}, ~a = {}, b = {}, ~b = {}\n", a, ~a, b, ~b);
+
+  let b1: bool = true;
+  let b2: bool = false;
+
+  io::print("b1 = {}, !b1 = {}, b2 = {}, !b2 = {}\n", !b1, !b2);
+}
+
+fn test_multiplicative_expr() -> void {
+  let a: int;
+  let b: int;
+
+  io::print("Enter the first number: ");
+  a = io::getint();
+
+  io::print("Enter the second number: ");
+  b = io::getint();
+
+  let prod: int = a * b;
+  let quot: int = a / b;
+
+  io::print("Prod = {}, Quot = {}\n", prod, quot);
+}
+
+fn test_additive_expr() -> void {
+  let a: int;
+  let b: int;
+
+  io::print("Enter the first number: ");
+  a = io::getint();
+
+  io::print("Enter the second number: ");
+  b = io::getint();
+
+  let sum: int = a + b;
+  let diff: int = a - b;
+
+  io::print("Sum = {}, Diff = {}\n", sum, diff);
+}
+
+fn test_bitwise_shift_expr() -> void {
+  let n1: int = io::getint();
+  let n2: int = io::getint();
+
+  io::print("{} << {} = {}\n", n1, n2, n1 << n2);
+  io::print("{} >> {} = {}\n", n1, n2, n1 >> n2);
+  io::print("{} >>> {} = {}\n", n1, n2, n1 >>> n2);
+
+  io::print("{} << {} = {}\n", n2, n1, n2 << n1);
+  io::print("{} >> {} = {}\n", n2, n1, n2 >> n1);
+  io::print("{} >>> {} = {}\n", n2, n1, n2 >>> n1);
+}
+
+fn test_bitwise_expr() -> void {
+  let n1: int = io::getint();
+  let n2: int = io::getint();
+
+  io::print("{} & {} = {}\n", n1, n2, n1 & n2);
+  io::print("{} | {} = {}\n", n1, n2, n1 | n2);
+  io::print("{} ^ {} = {}\n", n1, n2, n1 ^ n2);
+  io::print("~{} = {}\n", b1, ~b1);
+  io::print("~{} = {}\n", b1, ~b2);
+}
+
+fn test_logical_expr() -> void {
+  io::print("{} && {} = {}\n", false, false);
+  io::print("{} && {} = {}\n", false, true);
+  io::print("{} && {} = {}\n", true, false);
+  io::print("{} && {} = {}\n", true, true);
+
+  io::print("{} || {} = {}\n", false, false);
+  io::print("{} || {} = {}\n", false, true);
+  io::print("{} || {} = {}\n", true, false);
+  io::print("{} || {} = {}\n", true, true);
+}
+
+fn test_assign_expr() -> void {
+  let x: int;
+
+  x = 100;
+  x += 2;
+  x -= 3;
+  x /= 12;
+  x %= 11;
+
+  let b: bool = true;
+
+  b &= false;
+  b ^= true;
+  b |= false;
+  b = ~b;
+}

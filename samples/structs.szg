@@ -1,0 +1,31 @@
+use std::io;
+
+struct Person {
+  name: String,
+  age: int
+}
+
+fn read_person() -> Person {
+  io::print("Enter name: ");
+  let name: String = io::getstring();
+  io::print("Enter age: ");
+  let age: int = io::getint();
+
+  let person: Person = Person;
+  person.name = name;
+  person.age = age;
+
+  return person;
+}
+
+fn main() -> void {
+  display_person(&read_person());
+
+  let another_person: Person = { name: "Bob", age: 21 };
+  display_person(&another_person);
+}
+
+
+fn display_person(person: *Person) -> void {
+  io::print("Name = {}, age = {}\n", person->name, person->age);
+}

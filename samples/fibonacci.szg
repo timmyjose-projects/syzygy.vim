@@ -1,0 +1,22 @@
+use std::io;
+use std::error;
+
+fn fibonacci(n: int) -> int {
+  if n < 0 {
+    error::panic("The Fibonacci series is not defined for negativer numbers");
+  }
+
+  if n == 0 {
+    return 0;
+  } else if n == 1 {
+    return 1;
+  } else {
+    return fibonacci(n-1) + fibonacci(n-2);
+  }
+}
+
+fn main() -> void {
+  io::print("Enter a number: ");
+  let n: int = io::getint();
+  io::print("{}\n", fibonacci(n));
+}

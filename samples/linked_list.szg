@@ -1,0 +1,86 @@
+use std::io;
+use std::mem;
+
+struct Node {
+  data: int,
+  next: *Node
+}
+
+fn init_node(data: int) -> *Node {
+  let node: *Node = mem::alloc(mem::sizeof(Node));
+  node->data = data;
+  node->next = nullptr;
+
+  return node;
+}
+
+fn ll_insert_front(list: *Node, elem: int) -> *Node {
+  if list == nullptr {
+    list = init_node(elem);
+  } else {
+    let node: *Node = init_node(elem);
+    node->next = list;
+    list = node;
+  }
+
+  return list;
+}
+
+fn ll_insert_rear(list: *Node, elem: int) -> *Node {
+  if list == nullptr {
+    list = init_node(elem);
+  } else {
+    let curr: *Node = list;
+    while curr->next != nullptr {
+      curr = curr->next;
+    }
+
+    curr->next = init_node(elem);
+  }
+
+  return list;
+}
+
+fn ll_display(list: *Node) -> void {
+  if list == nullptr {
+    io::print("List is empty!");
+  } else {
+    let curr: *Node = list;
+    while curr != nullptr {
+      io::printf("{} ", curr->data);
+      curr = curr->next;
+    }
+  }
+}
+
+fn ll_destroy_list(list: *Node) -> void {
+  if list != nullptr {
+    let prev: *Node = nullptr;
+    let curr: *Node = list;
+
+    while curr != nullptr {
+      prev = curr;
+      curr = curr->next;
+      mem::free(prev);
+    }
+  }
+}
+
+fn main() -> void {
+  let list: *Node = nullptr;
+  defer ll_destroy_list(list);
+
+  list = ll_insert_front(list, 10);
+  list = ll_insert_front(list, 1);
+  list = ll_insert_front(list, 2);
+  list = ll_insert_front(list, -21);
+  list = ll_insert_front(list, 5);
+
+  ll_display(list);
+
+  list = ll_insert_rear(list, -11);
+  list = ll_insert_rear(list, 11);
+  list = ll_insert_rear(list, 28);
+
+  ll_display(list);
+}

@@ -1,0 +1,7 @@
+use std::io;
+
+fn main() -> void {
+  let x: int;
+  let y: int = 42;
+  let z: int = io::getint();
+}
