@@ -7,10 +7,10 @@
 :endif
 
 " keywords
-:syntax keyword syzygyKeyword struct nextgroup=syzygyStructName skipWhite skipempty
-:syntax keyword syzygyKeyword union nextgroup=syzygyUnionName skipwhite skipempty
-:syntax keyword syzygyKeyword enum nextgroup=syzygyEnumName skipwhite skipempty
-:syntax keyword syzygyKeyword fn nextgroup=syzygyFunctionName skipwhite skipempty
+:syntax keyword syzygyKeyword defstruct nextgroup=syzygyStructName skipWhite skipempty
+:syntax keyword syzygyKeyword defunion nextgroup=syzygyUnionName skipwhite skipempty
+:syntax keyword syzygyKeyword defenum nextgroup=syzygyEnumName skipwhite skipempty
+:syntax keyword syzygyKeyword defun nextgroup=syzygyFunctionName skipwhite skipempty
 :syntax keyword syzygyKeyword use let void
 :syntax keyword syzygyKeyword const
 :syntax keyword syzygyKeyword while return defer break continue
